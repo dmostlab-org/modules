@@ -20,6 +20,10 @@ variable "ci_ssh_key" {
   type = string
 }
 
+variable "ci_password" {
+  description = "cloud init password"
+}
+
 ###########Hardware Specs###########
 
 variable "os_type" {
