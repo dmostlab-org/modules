@@ -24,7 +24,7 @@ variable "ci_password" {
   description = "cloud init password"
 }
 
-#test123
+
 ###########Hardware Specs###########
 
 variable "os_type" {
