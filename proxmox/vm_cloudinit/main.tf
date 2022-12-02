@@ -20,7 +20,7 @@ resource "proxmox_vm_qemu" "ci_vm" {
 # if you want two NICs, just copy this whole network section and duplicate it
   network {
     model = var.vm_network_model
-    bridge = "vmbr0"
+    bridge = var.vm_network_bridge
   }
 
  disk {
@@ -32,7 +32,7 @@ resource "proxmox_vm_qemu" "ci_vm" {
     ssd = 1
   }
 
-  # not sure exactly what this is for. presumably something about MAC addresses and ignore network changes during the life of the VM
+ # ignore local network change
   lifecycle {
     ignore_changes = [
       network,
