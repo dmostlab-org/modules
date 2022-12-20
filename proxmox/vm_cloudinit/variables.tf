@@ -3,8 +3,19 @@ variable "vm_name" {
   type = string
 }
 
-variable "proxmox_host" {
+variable "vm_id" {
+  description = "The ID of the virtual machine"
+}
+
+variable "target_node" {
   type = string
+  description = "Destination Host for VM"
+}
+
+variable "vm_description" {
+  type        = string
+  description = "The description of the virtual machine"
+  default     = "Terraform Managed"
 }
 
 variable "template_name" {
@@ -22,8 +33,14 @@ variable "ci_ssh_key" {
 
 variable "ci_password" {
   description = "cloud init password"
+  default = ""
 }
 
+variable "vm_autostart" {
+  type        = bool
+  description = "Whether to automatically start the virtual machine when the Proxmox server is restarted"
+  default     = false
+}
 
 ###########Hardware Specs###########
 
@@ -45,7 +62,13 @@ variable "vm_sockets" {
 
 variable "vm_memory" {
   type = number
-  default = 4096
+  default = 2048
+}
+
+variable "vm_scaling" {
+  type        = bool
+  description = "Whether to enable scaling for the virtual machine"
+  default     = true
 }
 
 
@@ -83,7 +106,7 @@ variable "vm_storgesize" {
 }
 
 variable "vm_storagelocation" {
-  descripdescription = "where to create the disk" 
+  description = "where to create the disk" 
   type = string
-  defaultdefault = "lvm-thin" 
+  default = "lvm-thin" 
 }

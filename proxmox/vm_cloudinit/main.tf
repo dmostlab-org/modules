@@ -1,8 +1,10 @@
 
 resource "proxmox_vm_qemu" "ci_vm" {
-  name = var.vm_name 
-  target_node = var.proxmox_host
+  name = var.vm_name
+  vmid = var.vm_id 
+  target_node = var.target_node
   clone = var.template_name
+  description = var.vm_description
   full_clone = true
   ciuser = var.ci_user
   sshkeys = var.ci_ssh_key
@@ -35,7 +37,7 @@ resource "proxmox_vm_qemu" "ci_vm" {
  # ignore local network change
   lifecycle {
     ignore_changes = [
-      network,
+      network,target_node,storage
     ]
   }
   
