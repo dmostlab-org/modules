@@ -52,7 +52,7 @@ variable "os_type" {
 
 variable "vm_cores" {
   type = number
-  default = 4
+  default = 2
 }
 
 variable "vm_sockets" {
@@ -108,5 +108,5 @@ variable "vm_storgesize" {
 variable "vm_storagelocation" {
   description = "where to create the disk" 
   type = string
-  default = "lvm-thin" 
+  default = "local-lvm" 
 }

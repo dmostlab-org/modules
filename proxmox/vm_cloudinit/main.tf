@@ -1,4 +1,11 @@
 
+terraform {
+  required_providers {
+    proxmox = {
+      source = "telmate/proxmox"
+    }
+  }
+}
 resource "proxmox_vm_qemu" "ci_vm" {
   name = var.vm_name
   vmid = var.vm_id 
@@ -37,7 +44,7 @@ resource "proxmox_vm_qemu" "ci_vm" {
  # ignore local network change
   lifecycle {
     ignore_changes = [
-      network,target_node,storage
+      network,target_node,disk
     ]
   }
   
