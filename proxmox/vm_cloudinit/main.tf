@@ -11,10 +11,11 @@ resource "proxmox_vm_qemu" "ci_vm" {
   vmid = var.vm_id 
   target_node = var.target_node
   clone = var.template_name
-  description = var.vm_description
+  desc = var.vm_description
   full_clone = true
   ciuser = var.ci_user
   sshkeys = var.ci_ssh_key
+  tags = var.vm_tags
 
 # basic VM settings here. agent refers to guest agent
   agent = 1
