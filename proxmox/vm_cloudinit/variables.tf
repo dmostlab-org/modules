@@ -45,6 +45,7 @@ variable "vm_autostart" {
 variable "vm_tags" {
   type = string
   description = "Metadata tag for VM"
+  default = ""
 }
 
 ###########Hardware Specs###########
